@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="MySQL,DataBase,SQL,">
 
 
 
@@ -79,16 +79,18 @@
 
 
 
-<meta name="description" content="热爱一切美好事物">
-<meta property="og:type" content="website">
-<meta property="og:title" content="shiysin">
-<meta property="og:url" content="http://yoursite.com/categories/hexo/index.html">
+<meta name="description" content="MySQL基础知识:操作数据表、约束及修改数据表...">
+<meta name="keywords" content="MySQL,DataBase,SQL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL基础知识">
+<meta property="og:url" content="http://yoursite.com/2019/09/07/MySQL/index.html">
 <meta property="og:site_name" content="shiysin">
-<meta property="og:description" content="热爱一切美好事物">
+<meta property="og:description" content="MySQL基础知识:操作数据表、约束及修改数据表...">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-09-07T09:27:32.492Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="shiysin">
-<meta name="twitter:description" content="热爱一切美好事物">
+<meta name="twitter:title" content="MySQL基础知识">
+<meta name="twitter:description" content="MySQL基础知识:操作数据表、约束及修改数据表...">
 
 
 
@@ -118,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/categories/hexo/">
+  <link rel="canonical" href="http://yoursite.com/2019/09/07/MySQL/">
 
 
 
 
 
-  <title>分类: hexo | shiysin</title>
+  <title>MySQL基础知识 | shiysin</title>
   
 
 
@@ -143,7 +145,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -269,53 +271,389 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block category">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>hexo<small>分类</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/07/MySQL/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="shiysin">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="shiysin">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2019/09/07/hexo/" itemprop="url">
-              
-                <span itemprop="name">hexo博客命令</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">MySQL基础知识</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-09-07T16:35:49+08:00" content="2019-09-07">
-          09-07
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-07T19:25:49+08:00">
+                2019-09-07
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MySQL/" itemprop="url" rel="index">
+                    <span itemprop="name">MySQL</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  MySQL基础知识:操作数据表、约束及修改数据表...
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>##1.操作数据表</p>
+<p>####<font color="red">1.MySQL登录</font></p>
+<blockquote>
+<p><strong>net start mysql80</strong> or <strong>net stop mysql80</strong></p>
+<p><strong>mysql -uroot -p</strong></p>
+<p>password：<strong>1177</strong></p>
+</blockquote>
+<p>####<font color="red">2.prompt  提示符</font></p>
+<ul>
+<li><p>\D   当前日期</p>
+</li>
+<li><p>\d    当前数据库</p>
+</li>
+<li><p>\h    当前主机</p>
+</li>
+<li><p>\u    用户名</p>
+<pre><code>mysql -uroot -p --prompt \u@\h(\d)&gt;
+
+prompt \u@\h(\d)&gt;</code></pre></li>
+</ul>
+<p>####<font color="red">3.MySQL常用命令</font></p>
+<ul>
+<li>SELECT VERSION()&nbsp;&nbsp;&nbsp;&nbsp;显示版本</li>
+<li>SELECT NOW();&nbsp;&nbsp;显示日期</li>
+<li>SELECT USER();&nbsp;&nbsp;显示用户</li>
+<li>SELECT DATABASES()；&nbsp;&nbsp;显示数据库<br>####<font color="red">4.创建数据库test</font><pre><code>CREATE DATABASE [IF NOT EXISTS]test [CHARACTER SET utf-8];</code></pre></li>
+</ul>
+<ul>
+<li><p>SHOW WARNINGS;&nbsp;&nbsp;//查看warning</p>
+</li>
+<li><p>SHOW CREATE DATABASE test&nbsp;&nbsp;//展示创建的数据库信息<br>####<font color="red">5.修改数据库编码</font></p>
+<pre><code>ALTER DATABASE test CHARACTER SET = utf-8</code></pre><p>####<font color="red">6.删除数据库</font></p>
+<pre><code>DROP DATABASE [IF EXISTS] test;</code></pre><p>####<font color="red">7.创建数据表及基本操作</font></p>
+<pre><code>CREATE TABLE test1(
+    username VARCHAR(20) NOT NULL,     //字段可以为空
+    age TINYINT UNSIGNED NULL,        //非空
+    salary FLOAT(8,2) UNSIGNED
+);</code></pre></li>
+<li><p>查看数据表列表</p>
+<pre><code>SHOW TABLES [FROM test]</code></pre></li>
+<li><p>查看数据表结构</p>
+<pre><code>SHOW COLUMNS FROM test;</code></pre></li>
+<li><p>插入记录</p>
+<pre><code>//若省略[]中内容，则所有字段都要赋值
+INSERT test [username,age] VALUES(&apos;Cui&apos;,24);</code></pre></li>
+<li><p>查找记录</p>
+<pre><code>SELECT * FROM test;</code></pre></li>
+</ul>
+<p>####<font color="red">8.AUTO_INCREMENT &nbsp;自动编号</font></p>
+<ul>
+<li><p>自动编号，必须与主键组合使用,<strong>但主键不必定需要AUTO_INCREMENT</strong></p>
+</li>
+<li><p>默认情况下，起始值为1，每次的增量为1</p>
+</li>
+<li><p><strong>不需要赋值</strong></p>
+<pre><code>//必须设为主键 PRIMARY KEY
+CREATE TABLE test(
+    id SMALLINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+);</code></pre><p>####<font color="red">9.PRIMARY KEY  主键</font></p>
+</li>
+<li><p>主键约束</p>
+</li>
+<li><p>每张数据表只能存在一个主键</p>
+</li>
+<li><p>主键保证记录的唯一性</p>
+</li>
+<li><p>主键自动为NOT NULL</p>
+<pre><code>CREATE TABLE test(
+    id SMALL UNSIGNED PRIMARY KEY,
+);</code></pre><p>####<font color="red">10.UNIQUE KEY  唯一约束</font></p>
+</li>
+<li><p>唯一约束</p>
+</li>
+<li><p>唯一约束可以保证记录的唯一性</p>
+</li>
+<li><p>唯一约束的字段可以为空值(NULL)</p>
+</li>
+<li><p>每张数据表可以存在多个唯一约束&nbsp;<strong>(与主键的区别)</strong></p>
+<pre><code>CREATE TABLE test(
+    id SMALLINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(20) NOT NULL UNIQUE KEY,
+    age TINYINT(3) UNSIGNED
+);</code></pre><p>####<font color="red">11.DEFAULT  默认约束</font></p>
+</li>
+<li><p>默认值</p>
+</li>
+<li><p>当插入记录时，如果没有明确为字段赋值，自动赋默认值</p>
+<pre><code>//sex字段没有赋值时，默认为3
+CREATE TABLE test(
+    id SMALLINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(20) NOT NULL UNIQUE KEY,
+    sex ENUM(&apos;1&apos;,&apos;2&apos;,&apos;3&apos;) DEFAULT &apos;3&apos;
+);</code></pre><p>##2.约束及修改数据表<br>####<font color="red">1.约束</font></p>
+</li>
+<li><p>约束保证数据的一致性和完整性</p>
+</li>
+<li><p>约束分为表级约束和列级约束：对两个及以上字段使用为<strong>表级约束</strong>，对一个为<strong>列级约束</strong></p>
+</li>
+<li><p>约束类型包括：<strong>NOT NULL(</strong>非空约束)、<strong>PRIMARY KEY</strong> (主键约束)、<strong>UNIQUE KEY</strong>(唯一约束)、<strong>DEFAULT</strong> (默认约束)、<strong>FOREIGN KEY</strong>(外键约束)<br>####<font color="red">2.外键约束</font></p>
+</li>
+<li><p><strong>保持数据的一致性、完整性</strong>&nbsp;&nbsp;&nbsp;&nbsp;因此称为</p>
+</li>
+<li><p><strong>实现一对一或一对多关系</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关系型数据库<br>#####外键约束的要求:</p>
+</li>
+<li><p>父表和子表必须使用相同的存储引擎，且只能为InnoDB，禁止使用临时表</p>
+</li>
+<li><p>外键列和参照列必须具有相似的数据类型。数字的长度或有无符号位必须<strong>相同</strong>，字符长度可<strong>不同</strong></p>
+</li>
+<li><p>外键列和参数列必须创建索引，如果外键列不存在索引，MySQL将自动创建索引。<br>######创建一个省份数据表：</p>
+<pre><code>CREATE TABLE provinces(
+    id SMALLINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,    //参照列
+    pname VARCHAR(20) NOT NULL
+);
+//查看存储引擎是否为InnoDB
+SHOW CREATE TABLE provinces;</code></pre><p>######创建一个用户数据表,存储用户所在省份：</p>
+<pre><code>CREATE TABLE user(
+    id SMALLINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,    //参照列
+    username VARCHAR(10) NOT NULL,
+    pid SMALLINT UNSIGNED,            //外键列
+    //
+    FOREIGN KEY (pid) REFERENCES provinces (id)
+);</code></pre><blockquote>
+<p>显示索引： SHOW INDEXES FROM provinces\G;&nbsp;&nbsp;\G:以网格的形式呈现</p>
+</blockquote>
+</li>
+</ul>
+<p>###<font color="red">3.外键约束的参照操作</font></p>
+<ul>
+<li><p>CASCADE:从附表删除或更新时自动删除或更新子表中匹配的行</p>
+</li>
+<li><p>SET NULL:从父表删除或更新行，并设置子表中的外键列为NULL。使用该选项，必须保证子表列没有指定为NOT NULL。</p>
+</li>
+<li><p>RESTRICT:拒绝对父表的删除或更新操作。</p>
+</li>
+<li><p>NO ACTION:标准SQL的关键字，在MySQL中与RESTRICT相同。<br>###<font color="red">4.修改数据表</font></p>
+</li>
+<li><p>添加单列</p>
+<pre><code>//FIRST|AFTER 控制添加列的位置
+ALTER TABLE tbl_name ADD [COLUMN] col_name column_definition [FIRST|AFTER col_name]</code></pre><blockquote>
+<p><strong>ALTER TABLE</strong> user <strong>ADD</strong> password VARCHAR(32) NOT NULL DEFAULT <strong>AFTER</strong> username;    /插入在 username 列后</p>
+</blockquote>
+</li>
+<li><p>添加多列</p>
+<pre><code>ALTER TALBE tbl_name ADD [COLUMN](
+    col_name column_definition,
+    ...
+)</code></pre></li>
+<li><p>删除列</p>
+<pre><code>ALTER TABLE tbl_name DROP [COLUMN] col_name</code></pre></li>
+<li><p>删除多列且添加一列</p>
+<pre><code>ALTER TABLE tbl_name DROP col_name,DROP col_name,ADD col_name col_definition;</code></pre><p>###<font color="red">5.添加约束</font></p>
+</li>
+<li><p>添加主键约束</p>
+<pre><code>//CONSTRAINT 给主键添加名字
+ALTER TABLE tbl_name ADD [CONSTRAINT[symbol]] PRIMARY KEY [index_type] (index_col_name,...)</code></pre><blockquote>
+<p>eg: ALTER TABLE user ADD CONSTRAINT user_id PRIMARY KEY (id);</p>
+</blockquote>
+</li>
+<li><p>添加唯一约束</p>
+<pre><code>ALTER TABLE tbl_name ADD [CONSTRAINT[symbol]] UNIQUE [INEX|KEY] [index_name] [index_type] (index_col_name,...)</code></pre><blockquote>
+<p>eg: ALTER TABLE user ADD UNIQUE (username);</p>
+</blockquote>
+</li>
+<li><p>添加外键约束</p>
+<pre><code>ALTER TABLE tbl_name ADD [CONSTRAINT[symbol]] FOREIGN KEY [index_type] (index_col_name,...) reference_definition</code></pre><blockquote>
+<p>eg: ALTER TABLE user ADD FOREIGN KEY (pid) REFERENCE provinces (id);</p>
+</blockquote>
+</li>
+<li><p>添加/删除默认约束</p>
+<pre><code>ALTER TABLE tbl_name ALTER [COLUMN] col_name {SET DEFAULT literal|DROP DEFAULT}</code></pre><blockquote>
+<p>eg: ALTER TABLE user ADD age TINYINT UNSIGNED NOT NULL;</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ALTER TALBE user ALTER age SET DEFAULT 15;//添加默认约束</p>
+<p>ALTER TABLE user ALTER age DROP DEFAULT;//删除默认约束</p>
+</blockquote>
+<p>###<font color="red">6.删除约束</font></p>
+</li>
+<li><p>删除主键约束</p>
+<pre><code>ALTER TABLE tbl_name DROP PRIMARY KEY</code></pre></li>
+<li><p>删除唯一约束</p>
+<pre><code>//一张表可以有多个唯一约束，因此删除需要唯一约束名字
+ALTER TABLE tbl_name DROP {index|key} index_name</code></pre><blockquote>
+<p>eg: ALTER TABLE user DROP INDEX username;</p>
+</blockquote>
+</li>
+<li><p>删除外键约束</p>
+<pre><code>ALTER TABLE tbl_name DROP FOREIGN KEY fk_symbol</code></pre><blockquote>
+<p>eg: SHOW CREATE TABLE user;//查看外键约束的名字user_ibfk_1<br>&nbsp;ALTER TABLE user<br> FOREIGN KEY user_ibfk_1;</p>
+</blockquote>
+</li>
+<li><p>删除索引</p>
+</li>
+</ul>
+<blockquote>
+<p>eg:删除索引pid</p>
+<p>ALTER TABLE user DROP INDEX pid;</p>
+</blockquote>
+<p>###<font color="red">7.修改列定义</font></p>
+<pre><code>ALTER TABLE tbl_name MODIFY [COLUMN] col_name col_definition [FIRST|AFTER col_name]</code></pre><blockquote>
+<p>eg: ALTER TABLE user MODIFY id SMALLINT UNSIGNED NOT NULL FIRST;//修改id字段为首列</p>
+<p><strong>类型同样可以修改，若由大类型改为小类型，可能会造成数据丢失</strong></p>
+</blockquote>
+<ul>
+<li>修改列名称</li>
+</ul>
+<blockquote>
+<p>eg: ALTER TABLE user CHANGE pid p_id TINYINT UNSIGNED NOT NULL;</p>
+<p>//修改列名称pid为p_id</p>
+</blockquote>
+<p>###<font color="red">8.修改数据表名称</font></p>
+<ul>
+<li>方法1：ALTER TABLE tbl_name RENAME [TO|AS] new_tbl_name</li>
+<li>方法2：RENAME TABLE tbl_name TO new_tbl_name [,tbl_name2 TO new_tbl_name2]…</li>
+</ul>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/MySQL/" rel="tag"># MySQL</a>
+          
+            <a href="/tags/DataBase/" rel="tag"># DataBase</a>
+          
+            <a href="/tags/SQL/" rel="tag"># SQL</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/09/07/Java/" rel="next" title="Java核心技术一">
+                <i class="fa fa-chevron-left"></i> Java核心技术一
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -323,6 +661,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -543,6 +885,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 

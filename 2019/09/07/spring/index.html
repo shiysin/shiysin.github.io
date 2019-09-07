@@ -1,0 +1,1648 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="spring,SSM,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Spring的基础知识：IOC、AOP、事务、整合SSM等">
+<meta name="keywords" content="spring,SSM">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring基础知识">
+<meta property="og:url" content="http://yoursite.com/2019/09/07/spring/index.html">
+<meta property="og:site_name" content="shiysin">
+<meta property="og:description" content="Spring的基础知识：IOC、AOP、事务、整合SSM等">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-09-07T09:34:30.062Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Spring基础知识">
+<meta name="twitter:description" content="Spring的基础知识：IOC、AOP、事务、整合SSM等">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/09/07/spring/">
+
+
+
+
+
+  <title>Spring基础知识 | shiysin</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">shiysin</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/07/spring/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="shiysin">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="shiysin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Spring基础知识</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-07T17:35:49+08:00">
+                2019-09-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/spring/" itemprop="url" rel="index">
+                    <span itemprop="name">spring</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  Spring的基础知识：IOC、AOP、事务、整合SSM等
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="1-spring的注入方式"><a href="#1-spring的注入方式" class="headerlink" title="1. spring的注入方式"></a>1. spring的注入方式</h3><h5 id="a-bean配置"><a href="#a-bean配置" class="headerlink" title="a . bean配置"></a>a . bean配置</h5><ul>
+<li><p>设值注入</p>
+<ul>
+<li>setXxx()方法，</li>
+</ul>
+</li>
+<li><p>构造注入</p>
+<ul>
+<li><constructor-arg>标签 </constructor-arg></li>
+</ul>
+</li>
+<li><p>p命名空间</p>
+<ul>
+<li>xmlns:p=”<a href="http://www.springframework.org/schema/p&quot;" target="_blank" rel="noopener">http://www.springframework.org/schema/p&quot;</a>  并在<bean>标签中 P:name=””</bean></li>
+</ul>
+</li>
+<li><p>自动装配 (只适用于引用类型)autowire=”byName | byType | constructor | no” （不建议多次使用）</p>
+<ul>
+<li>在&lt; bean id=”” autowire=”byName” /&gt; ,当id的类中有和IOC容器中bean的id相同时，自动装配<br>byName : bean的id值=类的属性名<br>byType : 其他bean的类型（class）是否与该类的ref属性类型一致(当前IOC容器中只能有一个bean满足条件)<br>constructor : 其他bean的类型（class）是否与该类的构造方法参数的类型一致，本质是byType</li>
+<li>在头文件的beans标签中添加统一自动装配：default-autowire=”byName”</li>
+<li>自动装配虽然可以减少代码量，但是会降低程度的可读性，使用时需要谨慎</li>
+</ul>
+</li>
+</ul>
+<h5 id="b-注解方式"><a href="#b-注解方式" class="headerlink" title="b . 注解方式"></a>b . 注解方式</h5><ul>
+<li><p>@Component细化：</p>
+<ul>
+<li>@Repository  Dao层</li>
+<li>@Service  service层</li>
+<li>@Controller  controller层</li>
+</ul>
+</li>
+<li><p>配置包扫描器：</p>
+<pre><code>xmlns:context=&quot;http://www.springframework.org/schema/context&quot;
+http://www.springframework.org/schema/context  
+http://www.springframework.org/schema/context/spring-context.xsd  
+&lt;context:component-scan base-package=&quot;com.test.pojo&quot; /&gt;  </code></pre></li>
+<li><p>在声明前加上 @Value(“”)</p>
+</li>
+</ul>
+<h3 id="2-使用注解实现声明式事务"><a href="#2-使用注解实现声明式事务" class="headerlink" title="2. 使用注解实现声明式事务"></a>2. 使用注解实现声明式事务</h3><p>1.需要的包：  </p>
+<ul>
+<li>spring-tx.jar</li>
+<li>ojdbc.jar   驱动</li>
+<li>commons-dbcp.jar  连接池使用到的数据源</li>
+<li>commons-pool.jar  连接池</li>
+<li>spring-jdbc.jar</li>
+<li>aopalliance.jar  aop相关</li>
+</ul>
+<p>2.增加事务tx的命名空间</p>
+<p>3.增加对事务的支持(核心)：</p>
+<pre><code>&lt;tx:annotation-driven transaction-manager=&quot;txManager&quot; /&gt;  </code></pre><p> 配置事务管理器：   </p>
+<pre><code>&lt;bean id=&quot;txManager&quot; class=&quot;org.springframework.jdbc.datasource.DataSourceTransactionManager&quot;&gt;  
+    &lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot;/&gt;  
+&lt;/bean&gt;  </code></pre><p>配置数据库相关：</p>
+<pre><code>&lt;bean id=&quot;dataSource&quot; class=&quot;org.apache.commons.dbcp2.BasicDataSource&quot;&gt;
+    &lt;property name=&quot;driverClassName&quot; value=&quot;oracle.jdbc.OracleDriver&quot; /&gt;
+    &lt;property name=&quot;url&quot; value=&quot;&quot; /&gt;
+    &lt;property name=&quot;username&quot; value=&quot;system&quot; /&gt;
+    &lt;property name=&quot;password&quot; value=&quot;123456&quot; /&gt;
+    &lt;property name=&quot;maxIdle&quot; value=&quot;10&quot; /&gt;
+    &lt;property name=&quot;maxWaitMillis&quot; value=&quot;1000&quot; /&gt;
+&lt;/bean&gt;</code></pre><p>4.将需要成为事务的方法 前增加注解：</p>
+<pre><code>@Transactional(readOnly=false,propagation=Propagation.REQUIRED,rollBackFor=...)</code></pre><h3 id="3-AOP"><a href="#3-AOP" class="headerlink" title="3. AOP"></a>3. AOP</h3><p>需要的jar:</p>
+<ul>
+<li>aopliance.jar</li>
+<li>aspectjweaver.jar</li>
+</ul>
+<p>通知类型：org.springframework.aop.</p>
+<ul>
+<li><p>前置通知：MethodBeforeAdvice  接口方法 before()</p>
+</li>
+<li><p>后置通知：AfterReturningAdvice 接口方法 afterReturning()</p>
+</li>
+<li><p>异常通知：ThrowsAdvice 接口方法 无</p>
+</li>
+<li><p>环绕通知：MethodInterceptor 接口方法 invoke()</p>
+<pre><code>&lt;!-- 配置前置通知  切面 --&gt;  
+&lt;bean id=&quot;logBefore&quot; class=&quot;com.test.aop.LogBefore&quot;&gt;  
+&lt;/bean&gt;  
+&lt;!-- 关联切入点和切面 --&gt;
+&lt;aop:config &gt;
+    &lt;!-- 配置切入点 --&gt;
+    &lt;aop:pointcut id=&quot;pointcut&quot; expression=&quot;execution(public void com.test.service.demoService.DemoServiceImpl.addUser())&quot; /&gt;
+    &lt;!-- 连接线 --&gt;
+    &lt;aop:advisor advice-ref=&quot;logBefore&quot; pointcut-ref=&quot;pointcut&quot; /&gt;
+&lt;/aop:config&gt;</code></pre></li>
+</ul>
+<p>异常通知必须实现方法：</p>
+<pre><code>public void afterThrowing(Throwable ex)
+or
+ public void afterThrowing(Method method, Object[] args, Object target, Throwable ex)</code></pre><p>环绕通知：</p>
+<pre><code> @Override
+public Object invoke(MethodInvocation mi) throws Throwable {
+    Object result = null;
+    try {
+        System.out.println(&quot;环绕-前置通知&quot;);
+
+        //在此之前的为前置通知
+        result = mi.proceed();      //控制目标方法是否执行
+
+        //在此之后的为后置通知
+        System.out.println(&quot;环绕-后置通知:目标对象:&quot; + mi.getThis() + &quot;,调用的方法:&quot; + mi.getMethod().getName() +
+                &quot;,参数个数:&quot; + mi.getArguments().length + &quot;,返回值:&quot; + result);
+    }catch (Exception e){
+        //异常通知
+        System.out.println(&quot;环绕-异常通知&quot;);
+    }
+    return result;
+}</code></pre><h3 id="注解实现AOP"><a href="#注解实现AOP" class="headerlink" title="注解实现AOP"></a>注解实现AOP</h3><ul>
+<li><p>前置: @Before</p>
+</li>
+<li><p>后置: @AfterReturning</p>
+</li>
+<li><p>异常: @AfterThrowing</p>
+</li>
+<li><p>环绕: @Around</p>
+</li>
+<li><p>最终: @After</p>
+<p>注解形式AOP，需设置扫描器，扫描器会将指定的包中的 @Component @Service @Repository @Controller修饰的类产生的对象增加到IOC容器  </p>
+<p>通过注解形式实现的AOP，若要获取目标对象的一些参数，则需要使用一个对象：<strong>JoinPoint</strong></p>
+<p>  @Component(“logAnnotation”)<br>  @Aspect //表示此类是一个AOP通知<br>  public class LogAnnotation {</p>
+<pre><code>// 前置通知
+@Before(&quot;execution(public void addUser())&quot;)           // 属性定义触发时机(切点)
+public void myBefore(JoinPoint jp){
+    System.out.println(&quot;《注解》-前置通知:目标对象:&quot; + jp.getTarget() + &quot;,方法名:&quot; + jp.getSignature().getName() +
+    &quot;,参数个数:&quot; +jp.getArgs().length );
+}
+
+// 后置通知
+@AfterReturning(pointcut = &quot;execution(public void deleteUser())&quot;, returning = &quot;returningValue&quot;)    // 属性定义触发时机(切点)
+public void myAfter(JoinPoint jp, Object returningValue){   //需要声明该方法有返回值, returningValue 是返回值
+    System.out.println(&quot;《注解》-后置通知:目标对象:&quot; + jp.getTarget() + &quot;,方法名:&quot; + jp.getSignature().getName() +
+            &quot;,参数列表:&quot; + Arrays.toString(jp.getArgs()) + &quot;,返回值:&quot; + returningValue );
+}
+
+// 异常通知：如果只捕获特定类型的异常，则可以通过第二个参数实现：e
+@AfterThrowing(pointcut = &quot;execution(public void addUser())&quot;, throwing = &quot;e&quot;)
+public void myException(JoinPoint jp, NullPointerException e){
+    System.out.println(&quot;《注解》-异常通知: &quot; + e.getMessage());
+}
+
+// 环绕通知
+@Around(&quot;execution(public void addUser())&quot;)
+public void myAround(ProceedingJoinPoint pjp){
+    //前置通知
+    System.out.println(&quot;《注解-环绕》-前置通知&quot;);
+    try{
+        pjp.proceed();          // 执行方法,抛出的是Throwable
+
+        System.out.println(&quot;《注解-环绕》-后置通知&quot;);
+    }catch (Throwable e){
+        // 异常通知
+        System.out.println(&quot;《注解-环绕》-异常通知&quot;);
+    }finally {
+        // 最终通知
+        System.out.println(&quot;《注解-环绕》-最终通知&quot;);
+    }
+}
+//单独的最终通知
+@After(&quot;execution(public void addUser())&quot;)
+public void myAfter(){
+    System.out.println(&quot;《注解-环绕》-【单独的最终通知】&quot;);
+}</code></pre><p>  }</p>
+</li>
+</ul>
+<p>开启注解对AOP的支持</p>
+<pre><code>&lt;aop:aspectj-autoproxy&gt;&lt;/aop:aspectj-autoproxy&gt;</code></pre><h3 id="通过Scheme配置AOP"><a href="#通过Scheme配置AOP" class="headerlink" title="通过Scheme配置AOP"></a>通过Scheme配置AOP</h3><pre><code>xmlns:aop=&quot;http://www.springframework.org/schema/aop&quot;</code></pre><p>类似于实现接口的方式</p>
+<ul>
+<li><p>编写一个普通的类</p>
+<pre><code>// Schema实现的AOP不需要实现接口，只需要在xml里配置
+public class LogSchema {
+    // 前置通知
+    public void before(JoinPoint jp){
+        System.out.println(&quot;【Schema】前置通知&quot;);
+    }
+    //后置通知
+    public void afterReturning(JoinPoint jp, Object returnValue){
+        System.out.println(&quot;【Schema】后置通知:目标对象:&quot; + jp.getThis() + &quot;,方法名:&quot; + jp.getSignature().getName() + &quot;,参数个数:&quot;
+         + jp.getArgs().length + &quot;, 返回值:&quot; + returnValue);
+    }
+    // 环绕通知
+    public Object around(ProceedingJoinPoint pjp){
+        System.out.println(&quot;【Schema】环绕-前置通知&quot;);
+
+        Object result = null;
+        try {
+            //在此之前的为前置通知
+            result = pjp.proceed();      //控制目标方法是否执行
+            //在此之后的为后置通知
+
+            System.out.println(&quot;【Schema】环绕-后置通知:目标对象:&quot; + pjp.getThis() + &quot;,调用的方法:&quot; + pjp.getSignature().getName() +
+                    &quot;,参数个数:&quot; + pjp.getArgs().length + &quot;,返回值:&quot; + result);
+        }catch (Throwable e){
+            //异常通知
+            System.out.println(&quot;【Schema】环绕-异常通知&quot;);
+        }
+        return result;
+    }
+}</code></pre></li>
+<li><p>将该类通过配置，转为一个通知</p>
+</li>
+</ul>
+<p><strong>如果要获取目标对象的信息</strong>：  </p>
+<ul>
+<li><p><strong>注解</strong>、<strong>schema</strong>：JoinPoint</p>
+</li>
+<li><p><strong>接口</strong>：Method method, Object[] args, Object target</p>
+<pre><code> &lt;!-- 通过Schema实现AOP --&gt;
+&lt;bean id=&quot;logSchema&quot; class=&quot;com.test.aop.LogSchema&quot;&gt;
+&lt;/bean&gt;
+&lt;!-- 关联切入点和切面 --&gt;
+&lt;aop:config &gt;
+    &lt;!-- 配置切入点 --&gt;
+    &lt;aop:pointcut id=&quot;pcSchema&quot; expression=&quot;execution(public void com.test.service.demoService.DemoServiceImpl.addUser())&quot; /&gt;
+    &lt;!-- 连接线  Schema方式不需要这个
+        &lt;aop:advisor advice-ref=&quot;logSchema&quot; pointcut-ref=&quot;pcSchema&quot; /&gt;
+    --&gt;
+    &lt;aop:aspect ref=&quot;logSchema&quot;&gt;
+        &lt;!-- pointcut-ref：连接线      returnValue: 返回值 --&gt;
+        &lt;aop:before method=&quot;before&quot; pointcut-ref=&quot;pcSchema&quot;/&gt;
+        &lt;aop:after-returning method=&quot;afterReturning&quot; pointcut-ref=&quot;pcSchema&quot; returning=&quot;returnValue&quot;/&gt;
+        &lt;aop:around method=&quot;around&quot; pointcut-ref=&quot;pcSchema&quot;  /&gt;
+    &lt;/aop:aspect&gt;
+&lt;/aop:config&gt;</code></pre></li>
+</ul>
+<h2 id="Spring-开发Web项目"><a href="#Spring-开发Web项目" class="headerlink" title="Spring 开发Web项目"></a>Spring 开发Web项目</h2><p>Java项目中从main开始启动，可以初始化IOC容器，在Web项目中从服务器启动时，需通过监听器初始化IOC容器  </p>
+<p>需要用到 <strong>spring-web.jar</strong> ，并在web.xml中进行配置</p>
+<pre><code>&lt;!-- 配置spring-web.jar 提供的监听器，可以在服务器启动时初始化IOC容器 --&gt;
+&lt;listener&gt;
+    &lt;listener-class&gt;org.springframework.web.context.ContextLoaderListener&lt;/listener-class&gt;
+&lt;/listener&gt;
+
+&lt;context-param&gt;
+    &lt;!--
+        1. 必须告诉监听器此容器的位置：context-param
+        2. 默认约定的位置：WEB-INF/applicationContext.xml
+    --&gt;
+    &lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;
+    &lt;param-value&gt;classpath:applicationContext.xml&lt;/param-value&gt;
+&lt;/context-param&gt; </code></pre><p>配置时必须告诉监听器此容器的位置，或者用默认的名称放在默认约定的位置：<br><strong>WEB-INF/applicationContext.xml</strong></p>
+<h3 id="拆分Spring配置文件"><a href="#拆分Spring配置文件" class="headerlink" title="拆分Spring配置文件"></a>拆分Spring配置文件</h3><p>Web项目<strong>拆分</strong>配置：</p>
+<ul>
+<li>三层结构<ul>
+<li>UI（html/css/jsp/servlet）</li>
+<li>Service</li>
+<li>Dao</li>
+<li>公共 数据库</li>
+</ul>
+</li>
+<li>功能结构<ul>
+<li>学生管理系统的功能结构：学生相关配置、班级相关配置…</li>
+</ul>
+</li>
+</ul>
+<p>Web项目<strong>合并</strong>配置：</p>
+<p>1.在web.xml的context-param的classpath:中配置</p>
+<pre><code>&lt;param-value&gt;
+    classpath:applicationContext.xml,
+    classpath:applicationContext-1.xml,
+    classpath:applicationContext-2.xml
+&lt;/param-value&gt;    
+
+或
+
+（推荐）
+&lt;param-value&gt;
+    classpath:applicationContext.xml,
+    classpath:applicationContext-*.xml
+&lt;/param-value&gt;</code></pre><p>2.在主配置文件applicationContext.xml中引入其他文件</p>
+<pre><code>&lt;import resource=&quot;applicationContext-*.xml&quot; /&gt;
+...</code></pre><p>web.xml</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;web-app xmlns=&quot;http://xmlns.jcp.org/xml/ns/javaee&quot;
+     xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+     xsi:schemaLocation=&quot;http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd&quot;
+     version=&quot;4.0&quot;&gt;
+
+&lt;!-- 配置spring-web.jar 提供的监听器，可以在服务器启动时初始化IOC容器 --&gt;
+&lt;listener&gt;
+    &lt;listener-class&gt;org.springframework.web.context.ContextLoaderListener&lt;/listener-class&gt;
+&lt;/listener&gt;
+&lt;context-param&gt;
+    &lt;!--
+        1. 必须告诉监听器此容器的位置：context-param
+        2. 或者放在默认约定的位置：WEB-INF/applicationContext.xml
+    --&gt;
+    &lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;
+    &lt;param-value&gt;classpath:applicationContext.xml&lt;/param-value&gt;
+&lt;/context-param&gt;
+&lt;/web-app&gt;</code></pre><h4 id="springIOC容器与Servlet容器搭建通道，传递数据-servlet与service"><a href="#springIOC容器与Servlet容器搭建通道，传递数据-servlet与service" class="headerlink" title="springIOC容器与Servlet容器搭建通道，传递数据 (servlet与service)"></a>springIOC容器与Servlet容器搭建通道，传递数据 (servlet与service)</h4><p>在Servlet的init初始化方法中，获取SpringIOC容器中的bean对象</p>
+<pre><code>ApplicationContext context = WebApplicationContextUtils.getWebApplicationContext(&quot;&quot;);
+xxxService  = (xxxxService) context.getBean(&quot;&quot;);</code></pre><p><span id="#SpringMVC"></span></p>
+<h2 id="SpringMVC"><a href="#SpringMVC" class="headerlink" title="SpringMVC"></a><font color="red">SpringMVC</font></h2><h2 id="Mybatis"><a href="#Mybatis" class="headerlink" title="Mybatis"></a><font color="red">Mybatis</font></h2><p>MyBatis 可以简化JDBC操作，实现数据持久化  </p>
+<ul>
+<li>ORM: Object Relational Mapping</li>
+<li>ORM概念：MyBatis是ORM的一个实现  / Hibernate</li>
+<li>ORM可以使得开发人员，像操作对象一样操作数据库表</li>
+</ul>
+<h4 id="开发Mybatis步骤："><a href="#开发Mybatis步骤：" class="headerlink" title="开发Mybatis步骤："></a>开发Mybatis步骤：</h4><p>配置Mybatis</p>
+<ol>
+<li>jar包： mybatis.jar   ojdbc6.jar</li>
+</ol>
+<ul>
+<li>config.xml ： 配置数据库信息 和 需要加载的映射文件</li>
+<li>表 - 类</li>
+<li>映射文件xxxMapper.xml ： 增删改查标签 &lt; select&gt;</li>
+<li>测试类：sqlSession.selectOne(“需要查询的SQL的namespace.id”,”SQL的参数值”)；</li>
+</ul>
+<p>config.xml</p>
+<pre><code>    &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+    &lt;!DOCTYPE configuration  PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot;  &quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;&gt;
+
+    &lt;!--
+    default和id值保持一致，通过default找到id
+      --&gt;
+    &lt;configuration&gt;
+    &lt;environments default=&quot;development&quot;&gt;   &lt;!-- 默认环境，即环境的id --&gt;
+        &lt;environment id=&quot;development&quot;&gt;
+            &lt;!-- 配置事务的提交方式：
+                    1.用JDBC方式进行事务处理(commit  rollback  close)
+                    2.MANAGER：将事务交由其他组件去托管(spring, jobss),默认会关闭连接
+                         &lt;property name=&quot;closeConnection&quot; value=&quot;false&quot; /&gt;  // 设置为不关闭
+             --&gt;
+            &lt;transactionManager type=&quot;JDBC&quot;/&gt;
+
+        &lt;!-- 连接方式 UNPOOLED： 传统的连接方式(每次访问数据库都需要打开和关闭等操作)
+                       POOLED： 使用数据库连接池
+                         JNDI： 从tomcat获取一个内置的数据库连接池
+         --&gt;
+        &lt;dataSource type=&quot;POOLED&quot;&gt;
+            &lt;property name=&quot;driver&quot; value=&quot;oracle.jdbc.OracleDriver&quot;/&gt;
+            &lt;property name=&quot;url&quot; value=&quot;jdbc:oracle:thin:@localhost:1521:ORCL&quot;/&gt;
+            &lt;property name=&quot;username&quot; value=&quot;system&quot;/&gt;
+            &lt;property name=&quot;password&quot; value=&quot;123456&quot;/&gt;
+
+        &lt;/dataSource&gt;
+    &lt;/environment&gt;
+     &lt;mappers&gt;
+        &lt;!-- 在配置文件中加载映射文件 --&gt;
+        &lt;mapper resource=&quot;personMapper.xml&quot;/&gt;
+    &lt;/mappers&gt;
+&lt;/configuration&gt;</code></pre><p>xxxMapper.xml</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+&lt;!DOCTYPE mapper  PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;  &quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;
+&lt;!--
+    namespace       映射文件路径
+    id              区分查询语句
+    resultType      返回值
+    parameterType   传入参数的类型，这里是id的类型int
+--&gt;
+&lt;mapper namespace=&quot;com.pojo.personMapper&quot;&gt;
+        &lt;select id=&quot;queryPersonById&quot; resultType=&quot;com.pojo.Person&quot; parameterType=&quot;int&quot;&gt;
+          select * from person where id = #{id}
+       &lt;/select&gt;
+&lt;/mapper&gt;</code></pre><p>Mybatis的CRUD：</p>
+<pre><code>// 加载Mybatis文件，访问数据库
+Reader reader = Resources.getResourceAsReader(&quot;config.xml&quot;);
+// 当config.xml里的default不是所需的时，可以在build里强行切换数据库环境
+SqlSessionFactory sessionFactory = new SqlSessionFactoryBuilder().build(reader, &quot;development&quot;);
+// SqlSessionFactory -- Connection
+SqlSession sqlSession = sessionFactory.openSession();
+
+//  通过配置文件personMapper.xml里的namespace和id获得sql语句
+String statement = &quot;com.pojo.personMapper.addPerson&quot;;
+Person person = new Person(8, &quot;cui8&quot;, 27);
+//  insert 插入一个person
+int count = sqlSession.insert(statement, person);
+//需要 commit
+sqlSession.commit();
+
+System.out.println(&quot;增加&quot; + count + &quot;个成功&quot;);
+sqlSession.close();</code></pre><blockquote>
+<p><strong>Mybatis 约定</strong>：<br>输入参数parameterType 和 输出参数resultType，在形式上都只能有一个<br>如果输入参数是简单类型(8个基本+String)，是可以使用任何占位符#{xxx}的；<br>如果是对象类型，则必须是对象的属性：#{属性名}<br>如果使用的事务方式为 jdbc，则需要手动提交：sqlSession.commit()  </p>
+</blockquote>
+<h3 id="Mybatis动态代理方式的CRUD"><a href="#Mybatis动态代理方式的CRUD" class="headerlink" title="Mybatis动态代理方式的CRUD"></a>Mybatis动态代理方式的CRUD</h3><p>原则：约定优于配置  </p>
+<blockquote>
+<p>硬编码方式：abc.java<br>        Configguration conf = new Configuration();<br>        con.setName(“myProject”);<br>配置方式：abc.xml<br>        &lt; name&gt;myProject&lt; /name&gt;<br>约定：默认值就是myProject   </p>
+</blockquote>
+<p>具体实现步骤： </p>
+<ol>
+<li>jar包,config.xml  ,mapper.xml…  </li>
+</ol>
+<ul>
+<li><p>（不同处）约定的目标：省略掉Statement，即根据约定直接定位出SQL语句  </p>
+<ul>
+<li><p>1.建立一个接口PersonMapper </p>
+<ul>
+<li>约定：</li>
+<li><ol>
+<li>方法名和mapper.xml 文件中标签的id值一样</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>方法的输入参数类型和parameterType一样</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>方法的返回值和resultType一样</li>
+</ol>
+</li>
+<li>如：  Person queryPersonById(int id);</li>
+</ul>
+</li>
+<li><p>要实现接口中的方法 和 Mapper.xml中的SQL标签一 一对应，还需要：</p>
+<ul>
+<li>namespace的值，就是接口的全类名(接口–mapper.xml一 一对应)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>匹配的过程：（约定过程）</p>
+<ol>
+<li><p>根据接口名 找到mapper.xml文件 （根据的是namespace=接口全类名）  </p>
+</li>
+<li><p>根据接口的方法名 找到mapper.xml文件中的SQL标签（方法名=SQL标签id值）  </p>
+<p><strong>根据以上两点可以保证：当调用接口中的方法时，程序能自动定位到某一个Mapper.xml文件中的SQL标签</strong></p>
+</li>
+</ol>
+<p>习惯：SQL映射文件 和 接口放在同一位置(注意修改config.xml中加载mapper.xml文件的路径)</p>
+<p>以上，可以通过接口的方法————&gt; 映射到SQL语句  </p>
+<pre><code> // 通过约定接口的方式
+PersonMapper personMapper = sqlSession.getMapper(PersonMapper.class);
+personMapper.updatePerson(person);      //  根据接口的方法 ---&gt;  自动查找到SQL语句</code></pre><p>优化：</p>
+<ol>
+<li>可以将数据库信息放入db.properties，再通过 ${key} 动态引入      </li>
+</ol>
+<pre><code>&lt;configuration&gt;
+    &lt;properties resource=&quot;db.properties&quot; /&gt;</code></pre><ol start="2">
+<li><p>Mybatis 全局参数</p>
+<pre><code>//开启缓存
+&lt;settings&gt;
+    &lt;setting name=&quot;cacheEnabled&quot; value=&quot;true&quot; /&gt;
+    &lt;setting name=&quot;&quot; value=&quot;&quot; /&gt;
+    ...
+&lt;/settings&gt;</code></pre></li>
+<li><p>设置类的别名(忽略大小写)</p>
+<ul>
+<li><p>a. 设置单个别名</p>
+<p>  在config.xml中，&lt; typeAliases&gt; &lt; typeAlias type=”org…Person” alias=”Person” /&gt;…</p>
+</li>
+<li><p>b. 批量设置别名，别名就是不带包名的类名</p>
+<p>  // 包名<br>  &lt; typeAliases&gt; &lt; package name=”org.test” /&gt;…<br>  Mybatis 还内置了一些常见类的别名：_integer/_byte/_long/int/boolean…  </p>
+</li>
+</ul>
+</li>
+<li><p>类型处理器 (类型转换器)（将Java类型转换为JDBC类型，如int转换为oracle的number类型） </p>
+<ul>
+<li><p>a. Mybatis 自带一些常见的类型处理器  </p>
+<p>  如：BooleanTypeHandler:Boolean/boolean–&gt;任何兼容的布尔值<br>  IntegerTypeHandler：Integer/int–&gt;任何兼容的数字和整形<br>  …  </p>
+</li>
+<li><p>b. 自定义Mybatis 类型处理器  </p>
+<p>  Java类型 –&gt;  数据库（JDBC类型）<br>  示例：  </p>
+<pre><code>实体类Student： boolean  stuSex  true:男 false: 女  
+表student：number  stuSex 1：男  0：女</code></pre></li>
+</ul>
+</li>
+</ol>
+<p>自定义类型转换器(boolean – number) 步骤：  </p>
+<p>a. 创建类型转换器，要实现 TypeHandler接口 或继承BaseTypeHandler（更简单）<br>b. 在config.xml 中配置转换器  </p>
+<pre><code>&lt;!-- 类型处理器，将java的boolean类型 转换为 jdbc的number类型 --&gt;
+&lt;typeHandlers&gt;
+    &lt;typeHandler handler=&quot;com.mybatis.MyTypeHandler&quot; javaType=&quot;Boolean&quot; jdbcType=&quot;INTEGER&quot; /&gt;
+&lt;/typeHandlers&gt;</code></pre><p>c. 更改映射文件</p>
+<pre><code> &lt;!-- 验证类型转换器
+       1. 如果类的属性 和 表的字段类型 能够合理识别（String - varchar2），则可以使用resultType，否则使用resultMap（boolean-number）
+       2.    如果类的属性名 和 表的字段名 能够合理识别（String - varchar2），则可以使用resultType，否则使用resultMap（boolean-number）
+--&gt;
+&lt;select id=&quot;queryPersonByIdWithConverter&quot; resultMap=&quot;resultPerson&quot; parameterType=&quot;int&quot;&gt;select * from person where id = #{id}&lt;/select&gt;
+&lt;!-- 建立Person属性和表的字段的对应关系  主键id，非主键result , 再设置需要转换的类型--&gt;
+&lt;resultMap id=&quot;resultPerson&quot; type=&quot;person&quot;&gt;
+    &lt;id property=&quot;id&quot; column=&quot;id&quot; /&gt;
+    &lt;result property=&quot;sex&quot; column=&quot;sex&quot; javaType=&quot;boolean&quot; jdbcType=&quot;INTEGER&quot; /&gt;
+&lt;/resultMap&gt;</code></pre><h4 id="类型转换的增加"><a href="#类型转换的增加" class="headerlink" title="类型转换的增加"></a>类型转换的增加</h4><pre><code>// 更改SQL语句中需要转换的字段
+#{sex,javaType=boolean,jdbcType=INTEGER}</code></pre><h3 id="注意："><a href="#注意：" class="headerlink" title="注意："></a><font color="red"><strong>注意：</strong></font></h3><p><strong>1. 映射文件路径</strong></p>
+<pre><code>&lt;!-- 在配置文件中加载映射文件 IDEA里无法加载src下的xml文件 因此改用url class package等方式(接口与映射文件名称相同),
+       或将xml文件放到resources目录--&gt;
+&lt;!-- 通过包名设置路径 --&gt;
+&lt;package name=&quot;com.mybatis.myInter&quot; /&gt;</code></pre><p><strong>2. 映射文件和config.xml的jdbcType的类型</strong></p>
+<p>   <strong>integer</strong> 必须写成大写形式：<strong>INTEGER</strong></p>
+<h3 id="5-取值符号"><a href="#5-取值符号" class="headerlink" title="5. 取值符号"></a>5. 取值符号</h3><ol>
+<li>简单类型<br> #{任意值}  // 自动给String类型加上单引号’’ （自动类型转换）<br> ${value}  // 原样输出，但适合于动态排序(动态字段),其中的标识符只能是value</li>
+<li>对象类型<br> #{属性名}<br> ${属性名}</li>
+</ol>
+<h2 id="SSM整合"><a href="#SSM整合" class="headerlink" title="SSM整合"></a><font color="red">SSM整合</font></h2><ol>
+<li><p>SSM需要的jar</p>
+<ul>
+<li>mybatis.jar</li>
+<li>spring-tx.jar </li>
+<li>spring-jdbc.jar</li>
+<li>spring-context.support.jar</li>
+<li>spring-core.jar</li>
+<li>spring-beans.jar</li>
+<li>spring-aop.jar</li>
+<li>spring-web.jar</li>
+<li>spring-expression.ar</li>
+<li>spring-context.jar</li>
+<li>commons-logging.jar</li>
+<li>commons-dbcp.jar</li>
+<li>ojdbc.jar</li>
+<li>mybaits.jar</li>
+<li>log4.jar</li>
+<li>commons-pool.jar</li>
+<li></li>
+</ul>
+</li>
+<li><p>Mybatis需要的：类-表</p>
+</li>
+<li><p>Mybaits配置文件config.xml</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+&lt;!DOCTYPE configuration  PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot;  &quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;&gt;
+
+&lt;configuration&gt;
+    &lt;!-- 加载数据库配置文件 --&gt;
+    &lt;properties resource=&quot;db.properties&quot;/&gt;
+    &lt;!-- 批量设置别名 --&gt;
+    &lt;typeAliases&gt;
+        &lt;package name=&quot;bean&quot; /&gt;
+    &lt;/typeAliases&gt;
+
+    &lt;!-- 配置数据库环境 --&gt;
+    &lt;environments default=&quot;development&quot;&gt;
+        &lt;environment id=&quot;development&quot;&gt;
+            &lt;transactionManager type=&quot;JDBC&quot; /&gt;
+            &lt;dataSource type=&quot;POOLED&quot;&gt;
+                &lt;property name=&quot;driver&quot; value=&quot;${driver}&quot;/&gt;
+                &lt;property name=&quot;url&quot; value=&quot;${url}&quot;/&gt;
+                &lt;property name=&quot;username&quot; value=&quot;${username}&quot;/&gt;
+                &lt;property name=&quot;password&quot; value=&quot;${password}&quot;/&gt;
+            &lt;/dataSource&gt;
+        &lt;/environment&gt;
+    &lt;/environments&gt;
+
+    &lt;!-- 加载映射文件 --&gt;
+    &lt;mappers&gt;
+        &lt;package name=&quot;dao&quot; /&gt;
+    &lt;/mappers&gt;
+&lt;/configuration&gt;</code></pre></li>
+<li><p>通过mapper.xml将类、表建立映射关系</p>
+</li>
+<li><p>之前MyBatis使用config.xml –&gt; SqlSessionFactory，现在整合时，需要通过Spring管理SqlSessionFactory，因此 产生SqlSessionFactory不再放入config.xml，而是放入spring配置文件</p>
+</li>
+</ol>
+<ol start="6">
+<li><p>使用spring整合Mybatis  </p>
+<p> 目标： 通过spring产生mybatis最终操作需要的动态mapper对象<br> spring产生动态mapper对象有3种方法：</p>
+<ul>
+<li><p>DAO层实现类 继承 SqlSessionDaoSupport类：提供了一个属性 SqlSession ，产生mapper</p>
+</li>
+<li><p>扫描包方式</p>
+</li>
+</ul>
+</li>
+<li><p>继续整合SpringMVC：将springmvc加入项目即可：需要spring-webmvc.jar</p>
+<ul>
+<li>给项目加入springmvc支持：web.xml–&gt; dispatcherServlet</li>
+<li>编写springmvc配置文件：applicationContext-controller.xml：视图解析器、注解驱动(基础配置、标配)</li>
+<li></li>
+</ul>
+</li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/spring/" rel="tag"># spring</a>
+          
+            <a href="/tags/SSM/" rel="tag"># SSM</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/09/07/oracle常用操作/" rel="next" title="oracle基础知识及命令">
+                <i class="fa fa-chevron-left"></i> oracle基础知识及命令
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/09/07/Java/" rel="prev" title="Java核心技术一">
+                Java核心技术一 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">shiysin</p>
+              <p class="site-description motion-element" itemprop="description">热爱一切美好事物</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-spring的注入方式"><span class="nav-number">1.</span> <span class="nav-text">1. spring的注入方式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#a-bean配置"><span class="nav-number">1.0.1.</span> <span class="nav-text">a . bean配置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#b-注解方式"><span class="nav-number">1.0.2.</span> <span class="nav-text">b . 注解方式</span></a></li></ol></li></ol><li class="nav-item nav-level-3"><a class="nav-link" href="#2-使用注解实现声明式事务"><span class="nav-number">2.</span> <span class="nav-text">2. 使用注解实现声明式事务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-AOP"><span class="nav-number">3.</span> <span class="nav-text">3. AOP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注解实现AOP"><span class="nav-number">4.</span> <span class="nav-text">注解实现AOP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过Scheme配置AOP"><span class="nav-number">5.</span> <span class="nav-text">通过Scheme配置AOP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-开发Web项目"><span class="nav-number"></span> <span class="nav-text">Spring 开发Web项目</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#拆分Spring配置文件"><span class="nav-number">1.</span> <span class="nav-text">拆分Spring配置文件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#springIOC容器与Servlet容器搭建通道，传递数据-servlet与service"><span class="nav-number">1.1.</span> <span class="nav-text">springIOC容器与Servlet容器搭建通道，传递数据 (servlet与service)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SpringMVC"><span class="nav-number"></span> <span class="nav-text">SpringMVC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mybatis"><span class="nav-number"></span> <span class="nav-text">Mybatis</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#开发Mybatis步骤："><span class="nav-number">0.1.</span> <span class="nav-text">开发Mybatis步骤：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Mybatis动态代理方式的CRUD"><span class="nav-number">1.</span> <span class="nav-text">Mybatis动态代理方式的CRUD</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#类型转换的增加"><span class="nav-number">1.1.</span> <span class="nav-text">类型转换的增加</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注意："><span class="nav-number">2.</span> <span class="nav-text">注意：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-取值符号"><span class="nav-number">3.</span> <span class="nav-text">5. 取值符号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSM整合"><span class="nav-number"></span> <span class="nav-text">SSM整合</span></a></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">shiysin</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+    </div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
