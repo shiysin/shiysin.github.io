@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[Hello World]]></title>
-    <url>%2F2019%2F09%2F07%2Fhello-world%2F</url>
-    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
+    <title><![CDATA[hexo博客命令]]></title>
+    <url>%2F2019%2F09%2F07%2Fhexo%2F</url>
+    <content type="text"><![CDATA[常见的hexo命令$ hexo generate (hexo g) 生成静态文件 $ hexo server (hexo s) 启动本地服务 $ hexo deploy (hexo d) 提交到远程仓库 $ hexo new page &quot;xx&quot;(hexo n page) 创建页面 $ hexo new &quot;xx&quot; (hexo n &quot;&quot;) 创建文章 $ hexo d -g 生成静态并提交到远程仓库 $ hexo s -g 生成静态文件并启动本地预览 $ hexo clean 清除本地 public 文件安装hexo(通过git工具依次执行)$ npm install hexo-cli -g $ hexo init blog $ cd blog $ npm install $ hexo serverhexo根目录node_modules npm 文件缓存目录 scaffolds 文夹件下存放的是文章、页面模版 scource 文夹件下存放的是我们的资源文件 themes 文件下存放的是我们的主题文件 .gitignore git 忽略文件，设置提交文件时，哪些文件不提交 _config.yml 站点配置文件 package.json 站点版本，站点依赖文件 yarn.lock yarn.lock 文件由 Yarn 自动创建，并且完全通过 Yarn 进行操作。]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>blog</tag>
+        <tag>github</tag>
+      </tags>
   </entry>
 </search>
