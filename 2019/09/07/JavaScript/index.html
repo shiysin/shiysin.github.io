@@ -79,19 +79,19 @@
 
 
 
-<meta name="description" content="JavaScript基础知识：JavaScript的特点、JavaScript基本语法、函数、对象等">
+<meta name="description" content="JavaScript基础知识：JavaScript的特点、JavaScript基本语法、常量、变量、函数、内部对象（ Array、Date、Math、String）、定义对象方式、Window对象（document、location、navigator、screen）等">
 <meta name="keywords" content="JavaScript,JS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript基础知识">
 <meta property="og:url" content="http://yoursite.com/2019/09/07/JavaScript/index.html">
 <meta property="og:site_name" content="shiysin">
-<meta property="og:description" content="JavaScript基础知识：JavaScript的特点、JavaScript基本语法、函数、对象等">
+<meta property="og:description" content="JavaScript基础知识：JavaScript的特点、JavaScript基本语法、常量、变量、函数、内部对象（ Array、Date、Math、String）、定义对象方式、Window对象（document、location、navigator、screen）等">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://i.imgur.com/PmnIaZt.png">
-<meta property="og:updated_time" content="2019-09-07T09:46:32.964Z">
+<meta property="og:updated_time" content="2019-09-08T05:49:39.375Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript基础知识">
-<meta name="twitter:description" content="JavaScript基础知识：JavaScript的特点、JavaScript基本语法、函数、对象等">
+<meta name="twitter:description" content="JavaScript基础知识：JavaScript的特点、JavaScript基本语法、常量、变量、函数、内部对象（ Array、Date、Math、String）、定义对象方式、Window对象（document、location、navigator、screen）等">
 <meta name="twitter:image" content="https://i.imgur.com/PmnIaZt.png">
 
 
@@ -365,7 +365,7 @@
 
           
               <div class="post-description">
-                  JavaScript基础知识：JavaScript的特点、JavaScript基本语法、函数、对象等
+                  JavaScript基础知识：JavaScript的特点、JavaScript基本语法、常量、变量、函数、内部对象（ Array、Date、Math、String）、定义对象方式、Window对象（document、location、navigator、screen）等
               </div>
           
 
@@ -382,21 +382,21 @@
       
 
       
-        <h3 id="JavaScript简介"><a href="#JavaScript简介" class="headerlink" title="JavaScript简介"></a>JavaScript简介</h3><h4 id="1-JavaScript"><a href="#1-JavaScript" class="headerlink" title="1.JavaScript"></a>1.JavaScript</h4><ul>
+        <h3 id="JavaScript简介"><a href="#JavaScript简介" class="headerlink" title="JavaScript简介"></a>JavaScript简介</h3><h4 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h4><ul>
 <li>基于对象的脚本语言</li>
 <li>解释执行</li>
 <li>代码以纯文本的形式存储</li>
 <li>类型宽松，不必显示定义变量的数据类型</li>
 <li>Netscape公司和Sun公司联手完成</li>
 </ul>
-<h4 id="2-JavaScript的功能"><a href="#2-JavaScript的功能" class="headerlink" title="2.JavaScript的功能"></a>2.JavaScript的功能</h4><ul>
+<h4 id="JavaScript的功能"><a href="#JavaScript的功能" class="headerlink" title="JavaScript的功能"></a>JavaScript的功能</h4><ul>
 <li>数据验证  表单</li>
 <li>网页修饰和特效</li>
 <li>导航系统</li>
 <li>基本数学运算</li>
 <li>动态文档生成</li>
 </ul>
-<h4 id="3-JavaScript的特点"><a href="#3-JavaScript的特点" class="headerlink" title="3.JavaScript的特点"></a>3.JavaScript的特点</h4><ul>
+<h4 id="JavaScript的特点"><a href="#JavaScript的特点" class="headerlink" title="JavaScript的特点"></a>JavaScript的特点</h4><ul>
 <li>脚本编写：小程序段方式实现编程，是解释性语言</li>
 <li>基于对象：把页面中的各个元素看作对象</li>
 <li>简单：基本语句和控制简单，变量为弱类型</li>
@@ -404,7 +404,7 @@
 <li>动态：可以直接对客户的输入做出响应，事件驱动</li>
 <li>跨平台：依赖于浏览器本身，与操作环境无关</li>
 </ul>
-<h4 id="4-嵌入使用"><a href="#4-嵌入使用" class="headerlink" title="4.嵌入使用"></a>4.嵌入使用</h4><ul>
+<h4 id="嵌入使用"><a href="#嵌入使用" class="headerlink" title="嵌入使用"></a>嵌入使用</h4><ul>
 <li><p>在HTML中嵌入JavaScript：</p>
 <ul>
 <li><p>在页面中</p>
@@ -422,7 +422,7 @@
 <blockquote>
 <p>1、在HTML页面中嵌入script代码<br>2、language属性：定义脚本语言，一般设置为JavaScript，从HTML4.0开始，已经淘汰language属性，可以不写<br>3、type属性：用于指定脚本语言和Internet内容类型，一般设置为 text/javascript。注意，旧版本浏览器不支持type属性<br>4、HTML推荐将&lt;script&gt; 标记放在<head><meta name="generator" content="Hexo 3.9.0">标记中,<strong>浏览器执行HTML页面的过程是自上而下的线性过程</strong>  </head></p>
 </blockquote>
-<h3 id="JavaScript基本语法"><a href="#JavaScript基本语法" class="headerlink" title="JavaScript基本语法"></a>JavaScript基本语法</h3><h4 id="1-语法"><a href="#1-语法" class="headerlink" title="1.语法"></a>1.语法</h4><ul>
+<h3 id="JavaScript基本语法"><a href="#JavaScript基本语法" class="headerlink" title="JavaScript基本语法"></a>JavaScript基本语法</h3><h4 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h4><ul>
 <li>区分大小写</li>
 <li>变量是弱类型：变量在使用前不需要声明，而是解释器在运行时检查其数据类型</li>
 <li>行结尾加分号</li>
@@ -432,7 +432,7 @@
 <blockquote>
 <p>在浏览器中逐条解释执行，如果某条语句出现错误，后面的语句将不能执行</p>
 </blockquote>
-<h4 id="2-常量、变量"><a href="#2-常量、变量" class="headerlink" title="2.常量、变量"></a>2.常量、变量</h4><ul>
+<h4 id="常量、变量"><a href="#常量、变量" class="headerlink" title="常量、变量"></a>常量、变量</h4><ul>
 <li><p>JavaScript中没有常量概念，通常指直接在代码中给定值</p>
 <pre><code>var a = 123;
 var b = &quot;123&quot;;</code></pre></li>
@@ -547,7 +547,7 @@ var m, n=123;        //同时声明多个变量(不建议)</code></pre><ul>
 </ul>
 </li>
 </ul>
-<h4 id="1-argument对象"><a href="#1-argument对象" class="headerlink" title="1.argument对象"></a>1.argument对象</h4><ul>
+<h4 id="argument对象"><a href="#argument对象" class="headerlink" title="argument对象"></a>argument对象</h4><ul>
 <li><p>函数可以接受任意个数的参数，通过arguments来访问</p>
 <pre><code>function SayHi(){  
    if(arguments[0] ==&quot;bye&quot;){  
@@ -569,7 +569,7 @@ var m, n=123;        //同时声明多个变量(不建议)</code></pre><ul>
            alert(arguments.length);
     }
 
-利用arguments对象判断传递给函数的参数个数，即可模拟函数重载。</code></pre><h4 id="2-函数的调用"><a href="#2-函数的调用" class="headerlink" title="2.函数的调用"></a>2.函数的调用</h4><ul>
+利用arguments对象判断传递给函数的参数个数，即可模拟函数重载。</code></pre><h4 id="函数的调用"><a href="#函数的调用" class="headerlink" title="函数的调用"></a>函数的调用</h4><ul>
 <li><p>普通调用：myFunction(arg1, arg2)</p>
 </li>
 <li><p>无参数调用:myFunction()。跟参数没有关系，会找最后定义的函数</p>
@@ -652,12 +652,12 @@ var the_image_name = &quot;window.document.&quot; + the_image;
 </ul>
 </li>
 </ul>
-<h4 id="1、JavaScript中分为三种对象："><a href="#1、JavaScript中分为三种对象：" class="headerlink" title="1、JavaScript中分为三种对象："></a>1、JavaScript中分为三种对象：</h4><ul>
+<h4 id="JavaScript中分为三种对象："><a href="#JavaScript中分为三种对象：" class="headerlink" title="JavaScript中分为三种对象："></a>JavaScript中分为三种对象：</h4><ul>
 <li>1）浏览器对象：浏览器窗口window、文档 document、url地址等  </li>
 <li>2）脚本对象： String字符串对象、Date日期对象、Math数学对象等  </li>
 <li>3）HTML对象：各种HTML标记:、段落&lt;P&gt;、图片<img>、超链接&lt;A&gt;等  </li>
 </ul>
-<h4 id="2-对象创建及废除"><a href="#2-对象创建及废除" class="headerlink" title="2. 对象创建及废除"></a>2. 对象创建及废除</h4><ul>
+<h4 id="对象创建及废除"><a href="#对象创建及废除" class="headerlink" title="对象创建及废除"></a>对象创建及废除</h4><ul>
 <li><p>对象创建</p>
 <ul>
 <li><p>使用new关键字来创建对象</p>
@@ -683,7 +683,7 @@ var the_image_name = &quot;window.document.&quot; + the_image;
 <li>当运行无用存储单元收集程序时，所有废除对象都被销毁  </li>
 </ol>
 </blockquote>
-<h4 id="3-JavaScript内部对象"><a href="#3-JavaScript内部对象" class="headerlink" title="3. JavaScript内部对象"></a>3. JavaScript内部对象</h4><ul>
+<h4 id="JavaScript内部对象"><a href="#JavaScript内部对象" class="headerlink" title="JavaScript内部对象"></a>JavaScript内部对象</h4><ul>
 <li>Array</li>
 <li>Date</li>
 <li>Math</li>
@@ -807,7 +807,7 @@ if (x.constructor == String)
 <p>stringObject.slice(start,[end])和stringObject.substring(start,[end])方法都接受两个参数，<br>分别为子字符串的起始位置和终止位置，返回这两者之间的字符串，不包括终止位置的那个字符串。<br>如果不指定第二个参数，则默认为字符串的长度，即从起始位置到字符串的末尾。 </p>
 <p>【区别】这两个方法的区别主要是对于负数的处理不同。<br>负数参数对于slice()而言是从字符串的末尾往前计数，而substring()则直接将负数忽略，作为0来处理，并将0作为起始位置，正数作为终止位。<br>例如：<br>substring(2,-3)等同于substring(0,2) </p>
 </blockquote>
-<h4 id="4-定义对象"><a href="#4-定义对象" class="headerlink" title="4. 定义对象"></a>4. 定义对象</h4><ul>
+<h4 id="定义对象"><a href="#定义对象" class="headerlink" title="定义对象"></a>定义对象</h4><ul>
 <li><p>在JavaScript中可以使用构造函数Object()来创建自己的对象</p>
 <pre><code>var newObject = new Object;</code></pre></li>
 </ul>
@@ -887,7 +887,7 @@ alert(oCar1.drivers);   //outputs &quot;Mike,Sue&quot;  </code></pre><h5 id="第
     }    
   }    
   Car._initialized = true;    
-}  </code></pre><h4 id="5-操作对象"><a href="#5-操作对象" class="headerlink" title="5. 操作对象"></a>5. 操作对象</h4><ul>
+}  </code></pre><h4 id="操作对象"><a href="#操作对象" class="headerlink" title="操作对象"></a>操作对象</h4><ul>
 <li><p>使用with语句：</p>
 <ul>
 <li><p>在with语句体内，任何对变量的引用都被认为是这个对象的属性</p>
@@ -904,7 +904,7 @@ with (Math){
 </ul>
 </li>
 </ul>
-<h3 id="5-对象模型"><a href="#5-对象模型" class="headerlink" title="5. 对象模型"></a>5. 对象模型</h3><ul>
+<h3 id="对象模型"><a href="#对象模型" class="headerlink" title="对象模型"></a>对象模型</h3><ul>
 <li>浏览器对象模型-BOM(Browser Object Model)</li>
 <li>提供独立于内容而与浏览器窗口进行交互的对象</li>
 </ul>
@@ -1148,7 +1148,7 @@ with (Math){
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#JavaScript简介"><span class="nav-number">1.</span> <span class="nav-text">JavaScript简介</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-JavaScript"><span class="nav-number">1.1.</span> <span class="nav-text">1.JavaScript</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-JavaScript的功能"><span class="nav-number">1.2.</span> <span class="nav-text">2.JavaScript的功能</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-JavaScript的特点"><span class="nav-number">1.3.</span> <span class="nav-text">3.JavaScript的特点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-嵌入使用"><span class="nav-number">1.4.</span> <span class="nav-text">4.嵌入使用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JavaScript基本语法"><span class="nav-number">2.</span> <span class="nav-text">JavaScript基本语法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-语法"><span class="nav-number">2.1.</span> <span class="nav-text">1.语法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-常量、变量"><span class="nav-number">2.2.</span> <span class="nav-text">2.常量、变量</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数"><span class="nav-number">3.</span> <span class="nav-text">函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-argument对象"><span class="nav-number">3.1.</span> <span class="nav-text">1.argument对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-函数的调用"><span class="nav-number">3.2.</span> <span class="nav-text">2.函数的调用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对象"><span class="nav-number">4.</span> <span class="nav-text">对象</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、JavaScript中分为三种对象："><span class="nav-number">4.1.</span> <span class="nav-text">1、JavaScript中分为三种对象：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-对象创建及废除"><span class="nav-number">4.2.</span> <span class="nav-text">2. 对象创建及废除</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-JavaScript内部对象"><span class="nav-number">4.3.</span> <span class="nav-text">3. JavaScript内部对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-定义对象"><span class="nav-number">4.4.</span> <span class="nav-text">4. 定义对象</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#第一种方式：-工厂方法"><span class="nav-number">4.4.1.</span> <span class="nav-text">第一种方式： 工厂方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#第二种方式：构造函数方式"><span class="nav-number">4.4.2.</span> <span class="nav-text">第二种方式：构造函数方式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#第三种方式：原型方式"><span class="nav-number">4.4.3.</span> <span class="nav-text">第三种方式：原型方式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#第四种方式：混合的构造函数-原型方式（推荐"><span class="nav-number">4.4.4.</span> <span class="nav-text">第四种方式：混合的构造函数/原型方式（推荐)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#第五种方式：动态原型方式（推荐"><span class="nav-number">4.4.5.</span> <span class="nav-text">第五种方式：动态原型方式（推荐</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-操作对象"><span class="nav-number">4.5.</span> <span class="nav-text">5. 操作对象</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-对象模型"><span class="nav-number">5.</span> <span class="nav-text">5. 对象模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Window对象："><span class="nav-number">5.1.</span> <span class="nav-text">Window对象：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#document对象"><span class="nav-number">5.2.</span> <span class="nav-text">document对象:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#location-对象"><span class="nav-number">5.3.</span> <span class="nav-text">location 对象:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Navigator对象"><span class="nav-number">5.4.</span> <span class="nav-text">Navigator对象:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Screen对象"><span class="nav-number">5.5.</span> <span class="nav-text">Screen对象:</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#JavaScript简介"><span class="nav-number">1.</span> <span class="nav-text">JavaScript简介</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#JavaScript"><span class="nav-number">1.1.</span> <span class="nav-text">JavaScript</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JavaScript的功能"><span class="nav-number">1.2.</span> <span class="nav-text">JavaScript的功能</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JavaScript的特点"><span class="nav-number">1.3.</span> <span class="nav-text">JavaScript的特点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#嵌入使用"><span class="nav-number">1.4.</span> <span class="nav-text">嵌入使用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JavaScript基本语法"><span class="nav-number">2.</span> <span class="nav-text">JavaScript基本语法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#语法"><span class="nav-number">2.1.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常量、变量"><span class="nav-number">2.2.</span> <span class="nav-text">常量、变量</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数"><span class="nav-number">3.</span> <span class="nav-text">函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#argument对象"><span class="nav-number">3.1.</span> <span class="nav-text">argument对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#函数的调用"><span class="nav-number">3.2.</span> <span class="nav-text">函数的调用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对象"><span class="nav-number">4.</span> <span class="nav-text">对象</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#JavaScript中分为三种对象："><span class="nav-number">4.1.</span> <span class="nav-text">JavaScript中分为三种对象：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对象创建及废除"><span class="nav-number">4.2.</span> <span class="nav-text">对象创建及废除</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JavaScript内部对象"><span class="nav-number">4.3.</span> <span class="nav-text">JavaScript内部对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#定义对象"><span class="nav-number">4.4.</span> <span class="nav-text">定义对象</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#第一种方式：-工厂方法"><span class="nav-number">4.4.1.</span> <span class="nav-text">第一种方式： 工厂方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#第二种方式：构造函数方式"><span class="nav-number">4.4.2.</span> <span class="nav-text">第二种方式：构造函数方式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#第三种方式：原型方式"><span class="nav-number">4.4.3.</span> <span class="nav-text">第三种方式：原型方式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#第四种方式：混合的构造函数-原型方式（推荐"><span class="nav-number">4.4.4.</span> <span class="nav-text">第四种方式：混合的构造函数/原型方式（推荐)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#第五种方式：动态原型方式（推荐"><span class="nav-number">4.4.5.</span> <span class="nav-text">第五种方式：动态原型方式（推荐</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#操作对象"><span class="nav-number">4.5.</span> <span class="nav-text">操作对象</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对象模型"><span class="nav-number">5.</span> <span class="nav-text">对象模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Window对象："><span class="nav-number">5.1.</span> <span class="nav-text">Window对象：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#document对象"><span class="nav-number">5.2.</span> <span class="nav-text">document对象:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#location-对象"><span class="nav-number">5.3.</span> <span class="nav-text">location 对象:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Navigator对象"><span class="nav-number">5.4.</span> <span class="nav-text">Navigator对象:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Screen对象"><span class="nav-number">5.5.</span> <span class="nav-text">Screen对象:</span></a></li></ol></li></ol></div>
             
 
           </div>

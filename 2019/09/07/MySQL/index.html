@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="MySQL基础知识:操作数据表、约束及修改数据表...">
+<meta name="description" content="MySQL基础知识:操作数据库、数据表、约束（主键约束、外键约束、唯一约束、默认约束）、修改表，索引，约束等...">
 <meta name="keywords" content="MySQL,DataBase,SQL">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MySQL基础知识">
 <meta property="og:url" content="http://yoursite.com/2019/09/07/MySQL/index.html">
 <meta property="og:site_name" content="shiysin">
-<meta property="og:description" content="MySQL基础知识:操作数据表、约束及修改数据表...">
+<meta property="og:description" content="MySQL基础知识:操作数据库、数据表、约束（主键约束、外键约束、唯一约束、默认约束）、修改表，索引，约束等...">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-07T09:36:35.590Z">
+<meta property="og:updated_time" content="2019-09-08T05:54:27.011Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL基础知识">
-<meta name="twitter:description" content="MySQL基础知识:操作数据表、约束及修改数据表...">
+<meta name="twitter:description" content="MySQL基础知识:操作数据库、数据表、约束（主键约束、外键约束、唯一约束、默认约束）、修改表，索引，约束等...">
 
 
 
@@ -361,7 +361,7 @@
 
           
               <div class="post-description">
-                  MySQL基础知识:操作数据表、约束及修改数据表...
+                  MySQL基础知识:操作数据库、数据表、约束（主键约束、外键约束、唯一约束、默认约束）、修改表，索引，约束等...
               </div>
           
 
@@ -378,13 +378,13 @@
       
 
       
-        <h2 id="1-操作数据表"><a href="#1-操作数据表" class="headerlink" title="1.操作数据表"></a>1.操作数据表</h2><h4 id="1-MySQL登录"><a href="#1-MySQL登录" class="headerlink" title="1.MySQL登录"></a><font color="red">1.MySQL登录</font></h4><blockquote>
+        <h3 id="操作数据表"><a href="#操作数据表" class="headerlink" title="操作数据表"></a>操作数据表</h3><h4 id="MySQL登录"><a href="#MySQL登录" class="headerlink" title="MySQL登录"></a><font color="red">MySQL登录</font></h4><blockquote>
 <p><strong>net start mysql80</strong> or <strong>net stop mysql80</strong></p>
 <p><strong>mysql -uroot -p</strong></p>
 <p>password：<strong>1177</strong></p>
 </blockquote>
-<h4 id="2-prompt-提示符"><a href="#2-prompt-提示符" class="headerlink" title="2.prompt  提示符"></a><font color="red">2.prompt  提示符</font></h4><ul>
-<li><p>\D   当前日期</p>
+<h4 id="prompt-提示符"><a href="#prompt-提示符" class="headerlink" title="prompt  提示符"></a><font color="red">prompt  提示符</font></h4><ul>
+<li><p>\D    当前日期</p>
 </li>
 <li><p>\d    当前数据库</p>
 </li>
@@ -395,17 +395,17 @@
 
 prompt \u@\h(\d)&gt;</code></pre></li>
 </ul>
-<h4 id="3-MySQL常用命令"><a href="#3-MySQL常用命令" class="headerlink" title="3.MySQL常用命令"></a><font color="red">3.MySQL常用命令</font></h4><ul>
+<h4 id="MySQL常用命令"><a href="#MySQL常用命令" class="headerlink" title="MySQL常用命令"></a><font color="red">MySQL常用命令</font></h4><ul>
 <li>SELECT VERSION()&nbsp;&nbsp;&nbsp;&nbsp;显示版本</li>
 <li>SELECT NOW();&nbsp;&nbsp;显示日期</li>
 <li>SELECT USER();&nbsp;&nbsp;显示用户</li>
-<li>SELECT DATABASES()；&nbsp;&nbsp;显示数据库<h4 id="4-创建数据库test"><a href="#4-创建数据库test" class="headerlink" title="4.创建数据库test"></a><font color="red">4.创建数据库test</font></h4><pre><code>CREATE DATABASE [IF NOT EXISTS]test [CHARACTER SET utf-8];</code></pre></li>
+<li>SELECT DATABASES()；&nbsp;&nbsp;显示数据库<h4 id="创建数据库test"><a href="#创建数据库test" class="headerlink" title="创建数据库test"></a><font color="red">创建数据库test</font></h4><pre><code>CREATE DATABASE [IF NOT EXISTS]test [CHARACTER SET utf-8];</code></pre></li>
 </ul>
 <ul>
 <li><p>SHOW WARNINGS;&nbsp;&nbsp;//查看warning</p>
 </li>
 <li><p>SHOW CREATE DATABASE test&nbsp;&nbsp;//展示创建的数据库信息</p>
-<h4 id="5-修改数据库编码"><a href="#5-修改数据库编码" class="headerlink" title="5.修改数据库编码"></a><font color="red">5.修改数据库编码</font></h4><pre><code>ALTER DATABASE test CHARACTER SET = utf-8</code></pre><h4 id="6-删除数据库"><a href="#6-删除数据库" class="headerlink" title="6.删除数据库"></a><font color="red">6.删除数据库</font></h4><pre><code>DROP DATABASE [IF EXISTS] test;</code></pre><h4 id="7-创建数据表及基本操作"><a href="#7-创建数据表及基本操作" class="headerlink" title="7.创建数据表及基本操作"></a><font color="red">7.创建数据表及基本操作</font></h4><pre><code>CREATE TABLE test1(
+<h4 id="修改数据库编码"><a href="#修改数据库编码" class="headerlink" title="修改数据库编码"></a><font color="red">修改数据库编码</font></h4><pre><code>ALTER DATABASE test CHARACTER SET = utf-8</code></pre><h4 id="删除数据库"><a href="#删除数据库" class="headerlink" title="删除数据库"></a><font color="red">删除数据库</font></h4><pre><code>DROP DATABASE [IF EXISTS] test;</code></pre><h4 id="创建数据表及基本操作"><a href="#创建数据表及基本操作" class="headerlink" title="创建数据表及基本操作"></a><font color="red">创建数据表及基本操作</font></h4><pre><code>CREATE TABLE test1(
     username VARCHAR(20) NOT NULL,     //字段可以为空
     age TINYINT UNSIGNED NULL,        //非空
     salary FLOAT(8,2) UNSIGNED
@@ -420,7 +420,7 @@ INSERT test [username,age] VALUES(&apos;Cui&apos;,24);</code></pre></li>
 <li><p>查找记录</p>
 <pre><code>SELECT * FROM test;</code></pre></li>
 </ul>
-<h4 id="8-AUTO-INCREMENT-nbsp-自动编号"><a href="#8-AUTO-INCREMENT-nbsp-自动编号" class="headerlink" title="8.AUTO_INCREMENT &nbsp;自动编号"></a><font color="red">8.AUTO_INCREMENT &nbsp;自动编号</font></h4><ul>
+<h4 id="AUTO-INCREMENT-nbsp-自动编号"><a href="#AUTO-INCREMENT-nbsp-自动编号" class="headerlink" title="AUTO_INCREMENT &nbsp;自动编号"></a><font color="red">AUTO_INCREMENT &nbsp;自动编号</font></h4><ul>
 <li><p>自动编号，必须与主键组合使用,<strong>但主键不必定需要AUTO_INCREMENT</strong></p>
 </li>
 <li><p>默认情况下，起始值为1，每次的增量为1</p>
@@ -429,7 +429,7 @@ INSERT test [username,age] VALUES(&apos;Cui&apos;,24);</code></pre></li>
 <pre><code>//必须设为主键 PRIMARY KEY
 CREATE TABLE test(
     id SMALLINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-);</code></pre><h4 id="9-PRIMARY-KEY-主键"><a href="#9-PRIMARY-KEY-主键" class="headerlink" title="9.PRIMARY KEY  主键"></a><font color="red">9.PRIMARY KEY  主键</font></h4></li>
+);</code></pre><h4 id="PRIMARY-KEY-主键"><a href="#PRIMARY-KEY-主键" class="headerlink" title="PRIMARY KEY  主键"></a><font color="red">PRIMARY KEY  主键</font></h4></li>
 <li><p>主键约束</p>
 </li>
 <li><p>每张数据表只能存在一个主键</p>
@@ -439,7 +439,7 @@ CREATE TABLE test(
 <li><p>主键自动为NOT NULL</p>
 <pre><code>CREATE TABLE test(
     id SMALL UNSIGNED PRIMARY KEY,
-);</code></pre><h4 id="10-UNIQUE-KEY-唯一约束"><a href="#10-UNIQUE-KEY-唯一约束" class="headerlink" title="10.UNIQUE KEY  唯一约束"></a><font color="red">10.UNIQUE KEY  唯一约束</font></h4></li>
+);</code></pre><h4 id="UNIQUE-KEY-唯一约束"><a href="#UNIQUE-KEY-唯一约束" class="headerlink" title="UNIQUE KEY  唯一约束"></a><font color="red">UNIQUE KEY  唯一约束</font></h4></li>
 <li><p>唯一约束</p>
 </li>
 <li><p>唯一约束可以保证记录的唯一性</p>
@@ -451,7 +451,7 @@ CREATE TABLE test(
     id SMALLINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(20) NOT NULL UNIQUE KEY,
     age TINYINT(3) UNSIGNED
-);</code></pre><h4 id="11-DEFAULT-默认约束"><a href="#11-DEFAULT-默认约束" class="headerlink" title="11.DEFAULT  默认约束"></a><font color="red">11.DEFAULT  默认约束</font></h4></li>
+);</code></pre><h4 id="DEFAULT-默认约束"><a href="#DEFAULT-默认约束" class="headerlink" title="DEFAULT  默认约束"></a><font color="red">DEFAULT  默认约束</font></h4></li>
 <li><p>默认值</p>
 </li>
 <li><p>当插入记录时，如果没有明确为字段赋值，自动赋默认值</p>
@@ -460,13 +460,13 @@ CREATE TABLE test(
     id SMALLINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(20) NOT NULL UNIQUE KEY,
     sex ENUM(&apos;1&apos;,&apos;2&apos;,&apos;3&apos;) DEFAULT &apos;3&apos;
-);</code></pre><h2 id="2-约束及修改数据表"><a href="#2-约束及修改数据表" class="headerlink" title="2.约束及修改数据表"></a>2.约束及修改数据表</h2><h4 id="1-约束"><a href="#1-约束" class="headerlink" title="1.约束"></a><font color="red">1.约束</font></h4></li>
+);</code></pre><h3 id="约束及修改数据表"><a href="#约束及修改数据表" class="headerlink" title="约束及修改数据表"></a>约束及修改数据表</h3><h4 id="约束"><a href="#约束" class="headerlink" title="约束"></a><font color="red">约束</font></h4></li>
 <li><p>约束保证数据的一致性和完整性</p>
 </li>
 <li><p>约束分为表级约束和列级约束：对两个及以上字段使用为<strong>表级约束</strong>，对一个为<strong>列级约束</strong></p>
 </li>
 <li><p>约束类型包括：<strong>NOT NULL(</strong>非空约束)、<strong>PRIMARY KEY</strong> (主键约束)、<strong>UNIQUE KEY</strong>(唯一约束)、<strong>DEFAULT</strong> (默认约束)、<strong>FOREIGN KEY</strong>(外键约束)</p>
-<h4 id="2-外键约束"><a href="#2-外键约束" class="headerlink" title="2.外键约束"></a><font color="red">2.外键约束</font></h4></li>
+<h4 id="外键约束"><a href="#外键约束" class="headerlink" title="外键约束"></a><font color="red">外键约束</font></h4></li>
 <li><p><strong>保持数据的一致性、完整性</strong>&nbsp;&nbsp;&nbsp;&nbsp;因此称为</p>
 </li>
 <li><p><strong>实现一对一或一对多关系</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关系型数据库</p>
@@ -476,12 +476,12 @@ CREATE TABLE test(
 <li><p>外键列和参照列必须具有相似的数据类型。数字的长度或有无符号位必须<strong>相同</strong>，字符长度可<strong>不同</strong></p>
 </li>
 <li><p>外键列和参数列必须创建索引，如果外键列不存在索引，MySQL将自动创建索引。</p>
-<h6 id="创建一个省份数据表："><a href="#创建一个省份数据表：" class="headerlink" title="创建一个省份数据表："></a>创建一个省份数据表：</h6><pre><code>CREATE TABLE provinces(
+<h5 id="创建一个省份数据表："><a href="#创建一个省份数据表：" class="headerlink" title="创建一个省份数据表："></a>创建一个省份数据表：</h5><pre><code>CREATE TABLE provinces(
     id SMALLINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,    //参照列
     pname VARCHAR(20) NOT NULL
 );
 //查看存储引擎是否为InnoDB
-SHOW CREATE TABLE provinces;</code></pre><h6 id="创建一个用户数据表-存储用户所在省份："><a href="#创建一个用户数据表-存储用户所在省份：" class="headerlink" title="创建一个用户数据表,存储用户所在省份："></a>创建一个用户数据表,存储用户所在省份：</h6><pre><code>CREATE TABLE user(
+SHOW CREATE TABLE provinces;</code></pre><h5 id="创建一个用户数据表-存储用户所在省份："><a href="#创建一个用户数据表-存储用户所在省份：" class="headerlink" title="创建一个用户数据表,存储用户所在省份："></a>创建一个用户数据表,存储用户所在省份：</h5><pre><code>CREATE TABLE user(
     id SMALLINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,    //参照列
     username VARCHAR(10) NOT NULL,
     pid SMALLINT UNSIGNED,            //外键列
@@ -492,7 +492,7 @@ SHOW CREATE TABLE provinces;</code></pre><h6 id="创建一个用户数据表-存
 </blockquote>
 </li>
 </ul>
-<h3 id="3-外键约束的参照操作"><a href="#3-外键约束的参照操作" class="headerlink" title="3.外键约束的参照操作"></a><font color="red">3.外键约束的参照操作</font></h3><ul>
+<h4 id="外键约束的参照操作"><a href="#外键约束的参照操作" class="headerlink" title="外键约束的参照操作"></a><font color="red">外键约束的参照操作</font></h4><ul>
 <li><p>CASCADE:从附表删除或更新时自动删除或更新子表中匹配的行</p>
 </li>
 <li><p>SET NULL:从父表删除或更新行，并设置子表中的外键列为NULL。使用该选项，必须保证子表列没有指定为NOT NULL。</p>
@@ -500,7 +500,7 @@ SHOW CREATE TABLE provinces;</code></pre><h6 id="创建一个用户数据表-存
 <li><p>RESTRICT:拒绝对父表的删除或更新操作。</p>
 </li>
 <li><p>NO ACTION:标准SQL的关键字，在MySQL中与RESTRICT相同。</p>
-<h3 id="4-修改数据表"><a href="#4-修改数据表" class="headerlink" title="4.修改数据表"></a><font color="red">4.修改数据表</font></h3></li>
+<h4 id="修改数据表"><a href="#修改数据表" class="headerlink" title="修改数据表"></a><font color="red">修改数据表</font></h4></li>
 <li><p>添加单列</p>
 <pre><code>//FIRST|AFTER 控制添加列的位置
 ALTER TABLE tbl_name ADD [COLUMN] col_name column_definition [FIRST|AFTER col_name]</code></pre><blockquote>
@@ -515,7 +515,7 @@ ALTER TABLE tbl_name ADD [COLUMN] col_name column_definition [FIRST|AFTER col_na
 <li><p>删除列</p>
 <pre><code>ALTER TABLE tbl_name DROP [COLUMN] col_name</code></pre></li>
 <li><p>删除多列且添加一列</p>
-<pre><code>ALTER TABLE tbl_name DROP col_name,DROP col_name,ADD col_name col_definition;</code></pre><h3 id="5-添加约束"><a href="#5-添加约束" class="headerlink" title="5.添加约束"></a><font color="red">5.添加约束</font></h3></li>
+<pre><code>ALTER TABLE tbl_name DROP col_name,DROP col_name,ADD col_name col_definition;</code></pre><h4 id="添加约束"><a href="#添加约束" class="headerlink" title="添加约束"></a><font color="red">添加约束</font></h4></li>
 <li><p>添加主键约束</p>
 <pre><code>//CONSTRAINT 给主键添加名字
 ALTER TABLE tbl_name ADD [CONSTRAINT[symbol]] PRIMARY KEY [index_type] (index_col_name,...)</code></pre><blockquote>
@@ -538,7 +538,7 @@ ALTER TABLE tbl_name ADD [CONSTRAINT[symbol]] PRIMARY KEY [index_type] (index_co
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ALTER TALBE user ALTER age SET DEFAULT 15;//添加默认约束</p>
 <p>ALTER TABLE user ALTER age DROP DEFAULT;//删除默认约束</p>
 </blockquote>
-<h3 id="6-删除约束"><a href="#6-删除约束" class="headerlink" title="6.删除约束"></a><font color="red">6.删除约束</font></h3></li>
+<h4 id="删除约束"><a href="#删除约束" class="headerlink" title="删除约束"></a><font color="red">删除约束</font></h4></li>
 <li><p>删除主键约束</p>
 <pre><code>ALTER TABLE tbl_name DROP PRIMARY KEY</code></pre></li>
 <li><p>删除唯一约束</p>
@@ -559,7 +559,7 @@ ALTER TABLE tbl_name DROP {index|key} index_name</code></pre><blockquote>
 <p>eg:删除索引pid</p>
 <p>ALTER TABLE user DROP INDEX pid;</p>
 </blockquote>
-<h3 id="7-修改列定义"><a href="#7-修改列定义" class="headerlink" title="7.修改列定义"></a><font color="red">7.修改列定义</font></h3><pre><code>ALTER TABLE tbl_name MODIFY [COLUMN] col_name col_definition [FIRST|AFTER col_name]</code></pre><blockquote>
+<h4 id="修改列定义"><a href="#修改列定义" class="headerlink" title="修改列定义"></a><font color="red">修改列定义</font></h4><pre><code>ALTER TABLE tbl_name MODIFY [COLUMN] col_name col_definition [FIRST|AFTER col_name]</code></pre><blockquote>
 <p>eg: ALTER TABLE user MODIFY id SMALLINT UNSIGNED NOT NULL FIRST;//修改id字段为首列</p>
 <p><strong>类型同样可以修改，若由大类型改为小类型，可能会造成数据丢失</strong></p>
 </blockquote>
@@ -570,7 +570,7 @@ ALTER TABLE tbl_name DROP {index|key} index_name</code></pre><blockquote>
 <p>eg: ALTER TABLE user CHANGE pid p_id TINYINT UNSIGNED NOT NULL;</p>
 <p>//修改列名称pid为p_id</p>
 </blockquote>
-<h3 id="8-修改数据表名称"><a href="#8-修改数据表名称" class="headerlink" title="8.修改数据表名称"></a><font color="red">8.修改数据表名称</font></h3><ul>
+<h4 id="修改数据表名称"><a href="#修改数据表名称" class="headerlink" title="修改数据表名称"></a><font color="red">修改数据表名称</font></h4><ul>
 <li>方法1：ALTER TABLE tbl_name RENAME [TO|AS] new_tbl_name</li>
 <li>方法2：RENAME TABLE tbl_name TO new_tbl_name [,tbl_name2 TO new_tbl_name2]…</li>
 </ul>
@@ -748,7 +748,7 @@ ALTER TABLE tbl_name DROP {index|key} index_name</code></pre><blockquote>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-操作数据表"><span class="nav-number">1.</span> <span class="nav-text">1.操作数据表</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-MySQL登录"><span class="nav-number">1.0.1.</span> <span class="nav-text">1.MySQL登录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-prompt-提示符"><span class="nav-number">1.0.2.</span> <span class="nav-text">2.prompt  提示符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-MySQL常用命令"><span class="nav-number">1.0.3.</span> <span class="nav-text">3.MySQL常用命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-创建数据库test"><span class="nav-number">1.0.4.</span> <span class="nav-text">4.创建数据库test</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-修改数据库编码"><span class="nav-number">1.0.5.</span> <span class="nav-text">5.修改数据库编码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-删除数据库"><span class="nav-number">1.0.6.</span> <span class="nav-text">6.删除数据库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-创建数据表及基本操作"><span class="nav-number">1.0.7.</span> <span class="nav-text">7.创建数据表及基本操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-AUTO-INCREMENT-nbsp-自动编号"><span class="nav-number">1.0.8.</span> <span class="nav-text">8.AUTO_INCREMENT  自动编号</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-PRIMARY-KEY-主键"><span class="nav-number">1.0.9.</span> <span class="nav-text">9.PRIMARY KEY  主键</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-UNIQUE-KEY-唯一约束"><span class="nav-number">1.0.10.</span> <span class="nav-text">10.UNIQUE KEY  唯一约束</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#11-DEFAULT-默认约束"><span class="nav-number">1.0.11.</span> <span class="nav-text">11.DEFAULT  默认约束</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#2-约束及修改数据表"><span class="nav-number">2.</span> <span class="nav-text">2.约束及修改数据表</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-约束"><span class="nav-number">2.0.1.</span> <span class="nav-text">1.约束</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-外键约束"><span class="nav-number">2.0.2.</span> <span class="nav-text">2.外键约束</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#外键约束的要求"><span class="nav-number">2.0.2.1.</span> <span class="nav-text">外键约束的要求:</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#创建一个省份数据表："><span class="nav-number">2.0.2.1.1.</span> <span class="nav-text">创建一个省份数据表：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#创建一个用户数据表-存储用户所在省份："><span class="nav-number">2.0.2.1.2.</span> <span class="nav-text">创建一个用户数据表,存储用户所在省份：</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-外键约束的参照操作"><span class="nav-number">2.1.</span> <span class="nav-text">3.外键约束的参照操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-修改数据表"><span class="nav-number">2.2.</span> <span class="nav-text">4.修改数据表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-添加约束"><span class="nav-number">2.3.</span> <span class="nav-text">5.添加约束</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-删除约束"><span class="nav-number">2.4.</span> <span class="nav-text">6.删除约束</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-修改列定义"><span class="nav-number">2.5.</span> <span class="nav-text">7.修改列定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-修改数据表名称"><span class="nav-number">2.6.</span> <span class="nav-text">8.修改数据表名称</span></a></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#操作数据表"><span class="nav-number">1.</span> <span class="nav-text">操作数据表</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#MySQL登录"><span class="nav-number">1.1.</span> <span class="nav-text">MySQL登录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#prompt-提示符"><span class="nav-number">1.2.</span> <span class="nav-text">prompt  提示符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MySQL常用命令"><span class="nav-number">1.3.</span> <span class="nav-text">MySQL常用命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建数据库test"><span class="nav-number">1.4.</span> <span class="nav-text">创建数据库test</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改数据库编码"><span class="nav-number">1.5.</span> <span class="nav-text">修改数据库编码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除数据库"><span class="nav-number">1.6.</span> <span class="nav-text">删除数据库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建数据表及基本操作"><span class="nav-number">1.7.</span> <span class="nav-text">创建数据表及基本操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AUTO-INCREMENT-nbsp-自动编号"><span class="nav-number">1.8.</span> <span class="nav-text">AUTO_INCREMENT  自动编号</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#PRIMARY-KEY-主键"><span class="nav-number">1.9.</span> <span class="nav-text">PRIMARY KEY  主键</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#UNIQUE-KEY-唯一约束"><span class="nav-number">1.10.</span> <span class="nav-text">UNIQUE KEY  唯一约束</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DEFAULT-默认约束"><span class="nav-number">1.11.</span> <span class="nav-text">DEFAULT  默认约束</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#约束及修改数据表"><span class="nav-number">2.</span> <span class="nav-text">约束及修改数据表</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#约束"><span class="nav-number">2.1.</span> <span class="nav-text">约束</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#外键约束"><span class="nav-number">2.2.</span> <span class="nav-text">外键约束</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#外键约束的要求"><span class="nav-number">2.2.1.</span> <span class="nav-text">外键约束的要求:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#创建一个省份数据表："><span class="nav-number">2.2.2.</span> <span class="nav-text">创建一个省份数据表：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#创建一个用户数据表-存储用户所在省份："><span class="nav-number">2.2.3.</span> <span class="nav-text">创建一个用户数据表,存储用户所在省份：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#外键约束的参照操作"><span class="nav-number">2.3.</span> <span class="nav-text">外键约束的参照操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改数据表"><span class="nav-number">2.4.</span> <span class="nav-text">修改数据表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加约束"><span class="nav-number">2.5.</span> <span class="nav-text">添加约束</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除约束"><span class="nav-number">2.6.</span> <span class="nav-text">删除约束</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改列定义"><span class="nav-number">2.7.</span> <span class="nav-text">修改列定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改数据表名称"><span class="nav-number">2.8.</span> <span class="nav-text">修改数据表名称</span></a></li></ol></li></ol></div>
             
 
           </div>
