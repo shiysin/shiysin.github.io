@@ -1,2 +1,2 @@
-# 主页地址：(shiysin.github.io)
+# Home Page: [shiysin.github.io](shiysin.github.io)
 # Hexo markdown file.
